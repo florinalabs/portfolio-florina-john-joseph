@@ -1,93 +1,137 @@
 import Image from "next/image";
 import GitHubPortfolio from "./components/GitHubPortfolio";
 
-const skills = [
-  { title: "Frontend", items: ["JavaScript", "TypeScript", "React", "Next.js", "HTML5 / CSS3", "Tailwind", "Vite"] },
-  { title: "Mobile", items: ["React Native", "Expo", "NativeWind"] },
-  { title: "Backend", items: ["Node.js", "Express", "FastAPI", "PHP", "Laravel"] },
-  { title: "APIs & Data", items: ["REST", "GraphQL", "Webhooks", "SQL", "PostgreSQL", "MongoDB", "Firebase", "Supabase"] },
-  { title: "Cloud & DevOps", items: ["Google Cloud Platform", "AWS", "Terraform", "Server Infrastructure", "Deployment", "CI/CD", "Docker | Podman"] },
-  { title: "AI & Automation", items: ["Azure AI", "LLM", "RAG", "n8n", "Workflow Automation", "API Integration"] },
-  { title: "CMS & Commerce", items: ["WordPress", "WooCommerce", "Shopify", "SEO"] },
-  { title: "3D & Creative", items: ["Blender", "3D Modeling", "3D Visualization", "Product Rendering", "Photoshop"] },
+// ============================================================================
+// PROFESSIONAL SUMMARY (from resume.md)
+// ============================================================================
+const professionalSummary = `
+I'm a Senior Technical Lead & Architect with over 10 years of experience in Full-Stack Development, Cloud Infrastructure (AWS/GCP), AI-driven system architecture, and Enterprise CMS Management. 
+
+My expertise spans building scalable web platforms (Next.js), mobile applications (Expo/React Native), production-ready WordPress sites, and managing complex technical delivery from inception through deployment.
+
+Proven track record of transitioning complex projects from local deployment to national-scale cloud infrastructure using Next.js, FastAPI, Xendit Payments, Generative AI (RAG), workflow automation, and code quality management tools like SonarQube.
+
+Currently seeking a Senior Technical Lead or Architect role where I can combine hands-on coding with strategic technical leadership and project delivery excellence to deliver robust, secure, and AI-integrated solutions.
+`;
+
+// ============================================================================
+// CORE COMPETENCIES (from resume.md)
+// ============================================================================
+const coreCompetencies = [
+  {
+    category: "Web Development",
+    skills: ["React", "Next.js", "TypeScript", "Node.js", "FastAPI", "GraphQL", "REST APIs", "Tailwind CSS", "Vite"]
+  },
+  {
+    category: "Mobile & Cross-Platform",
+    skills: ["React Native", "Expo", "NativeWind", "iOS/Android Development", "Mobile-First Design"]
+  },
+  {
+    category: "CMS & Legacy Systems",
+    skills: ["WordPress", "PHP", "Laravel", "Custom Theme Development", "Rank Math SEO", "Google Analytics 4", "Elementor"]
+  },
+  {
+    category: "Cloud & DevOps",
+    skills: ["AWS (AI Practitioner)", "GCP", "Terraform", "CI/CD Pipelines", "Docker", "Serverless Architecture", "SonarQube", "GitHub Actions"]
+  },
+  {
+    category: "Artificial Intelligence",
+    skills: ["LLM Integration (RAG/Ollama)", "Azure AI", "Prompt Engineering", "n8n Automation", "Data Pipelines"]
+  },
+  {
+    category: "Commerce & Payments",
+    skills: ["Xendit API", "WooCommerce", "Shopify", "Payment Gateway Security", "Webhooks", "Stripe"]
+  },
+  {
+    category: "Project Management",
+    skills: ["Agile/Scrum Methodologies", "Sprint Planning", "Stakeholder Communication", "Risk Management", "Cross-Team Coordination", "Budgeting", "Timeline Delivery"]
+  },
+  {
+    category: "Security & Compliance",
+    skills: ["OWASP Top 10", "Row-Level Security (RLS)", "JWT Authentication", "IAM Roles", "Data Privacy", "Code Quality Assurance"]
+  }
 ];
 
-const projects = [
+// ============================================================================
+// KEY PROJECTS & ARCHITECTURE PORTFOLIO (from resume.md)
+// ============================================================================
+const keyProjects = [
   {
     index: "01",
+    label: "AI SaaS Platform",
+    title: "Puppeteer.cloud",
+    description:
+      "A no-code AI agent platform focused on workflow automation, multi-agent coordination, and business process execution through configurable agent experiences. Architected AI agent workflows to automate business processes and reduce manual data entry tasks by 80%.",
+    tech: ["Next.js", "TypeScript", "FastAPI", "Supabase", "AWS Lambda", "Docker", "RAG (Retrieval Augmented Generation)"],
+    links: [
+      { label: "Visit Puppeteer.cloud", href: "https://www.puppeteer.cloud/" },
+    ],
+  },
+  {
+    index: "02",
     label: "Mobile + Marketplace",
     title: "Lalaba",
     description:
-      "A customer and merchant laundry platform with booking, order tracking, service workflows and mobile-first experiences backed by production APIs and cloud services.",
-    tech: ["React Native", "Expo", "APIs", "Payments", "Cloud"],
+      "A customer and merchant laundry platform with booking, order tracking, service workflows, and mobile-first experiences backed by production APIs and cloud services (AWS/GCP). Built mobile-first experiences using React Native and Expo, ensuring consistent UI/UX across iOS and Android.",
+    tech: ["React Native", "Expo", "REST APIs", "Xendit Payments", "Cloud (AWS/GCP)"],
     links: [
       { label: "Open Lalaba", href: "https://app.lalaba.ph/" },
       { label: "App Store", href: "https://apps.apple.com/ph/app/lalaba/id6757118750" },
     ],
   },
   {
-    index: "02",
-    label: "Full-Stack + Education",
-    title: "Chess Learning Academy",
-    description:
-      "A full-stack web experience for an online chess academy, presenting structured learning programs, coaching, trial booking, academy information and digital brand experiences for students and parents.",
-    tech: ["Full-Stack", "Web Platform", "UI / UX", "3D Assets", "Integrations"],
-    links: [
-      { label: "Visit Chess Learning Academy", href: "https://chesslearningacademy.com/" },
-    ],
-  },
-  {
     index: "03",
-    label: "Web + Mobile",
-    title: "Kwyky",
+    label: "Full-Stack Learning Platform",
+    title: "Scholarly",
     description:
-      "A web and mobile product integrating application workflows, backend services and APIs. This project is retained as a legacy case study from my previous portfolio.",
-    tech: ["Web", "Mobile", "REST APIs", "Integration"],
-    links: [
-      { label: "Legacy case study", href: "https://kwyky.ph" },
-    ],
+      "Designed a scalable learning management system with student performance tracking and payment integration. Achieved 95% uptime during peak exam periods through optimized database queries and caching strategies.",
+    tech: ["React Native", "Expo", "Node.js", "PostgreSQL", "Xendit API", "Vercel", "3D Assets Integration"],
+    links: [],
   },
   {
     index: "04",
-    label: "AI SaaS",
-    title: "Puppeteer.cloud",
-    description:
-      "A no-code AI agent platform focused on workflow automation, multi-agent coordination and business process execution through configurable agent experiences.",
-    tech: ["AI Agents", "Automation", "SaaS", "APIs", "LLM"],
-    links: [
-      { label: "Visit Puppeteer.cloud", href: "https://www.puppeteer.cloud/" },
-    ],
-  },
-  {
-    index: "05",
     label: "Backend + Payments",
     title: "FindXnY Payment Gateway",
     description:
-      "Backend and integration work around secure payment processing, transaction workflows, webhooks and application-to-service communication.",
-    tech: ["Backend", "Payments", "Webhooks", "Security", "APIs"],
+      "Backend and integration work around secure payment processing, transaction workflows, webhooks, and application-to-service communication. Designed and implemented high-security payment gateways handling sensitive financial transactions with robust webhook validation.",
+    tech: ["FastAPI/Node.js Backend", "Xendit API", "Webhooks", "Payment Security", "REST APIs", "Vite"],
     links: [
       { label: "Visit FindXnY", href: "https://findxny.ph/" },
     ],
   },
   {
-    index: "06",
+    index: "05",
     label: "Automation",
     title: "n8n Workflow Integrations",
     description:
-      "Workflow automation connecting APIs, webhooks and application services to reduce repetitive work and orchestrate business processes.",
-    tech: ["n8n", "Webhooks", "REST APIs", "Automation", "AI"],
+      "Workflow automation connecting APIs, webhooks, and application services to reduce repetitive work and orchestrate business processes. Created custom automation engines that connected disparate systems (e.g., CRM, Slack, Email) into unified workflows.",
+    tech: ["n8n", "Webhooks", "REST APIs", "Automation Logic", "AI Agents"],
     links: [],
+  },
+  {
+    index: "06",
+    label: "Full-Stack + Education",
+    title: "Chess Learning Academy",
+    description:
+      "A full-stack web experience for an online chess academy, presenting structured learning programs, coaching, trial booking, academy information and digital brand experiences for students and parents. Developed custom WordPress child themes and optimized database queries, increasing organic traffic by 30%+ within 6 months. Integrated third-party CRM tools for automated lead management and student tracking.",
+    tech: ["Full-Stack", "Web Platform", "UI / UX", "3D Assets", "Integrations"],
+    links: [
+      { label: "Visit Chess Learning Academy", href: "https://chesslearningacademy.com/" },
+    ],
   },
 ];
 
+// ============================================================================
+// WORDPRESS & CLIENT SITES (from resume.md)
+// ============================================================================
 const wordpressProjects = [
   {
     index: "WP-01",
     title: "C&J Sunset View Resort",
     domain: "cjsunsetview.com",
     description:
-      "Hospitality and resort website with accommodation discovery, booking and reservation flows, room details, events, gallery, account and checkout experiences.",
-    tech: ["WordPress", "Booking", "Responsive UI", "SEO"],
+      "Hospitality and resort website with accommodation discovery, booking and reservation flows, room details, events, gallery, account and checkout experiences. Built custom WordPress themes and plugins, optimizing Core Web Vitals scores using Rank Math and GA4.",
+    tech: ["WordPress", "WooCommerce Booking", "Rank Math SEO", "GA4 Event Tracking", "Responsive UI", "Elementor"],
     href: "https://cjsunsetview.com/",
   },
   {
@@ -95,8 +139,8 @@ const wordpressProjects = [
     title: "GWP Engagement Solutions",
     domain: "gwpengage.com",
     description:
-      "Corporate engagement website presenting consulting, reward and recognition, event production, webinars and other services with clear lead-generation and contact flows.",
-    tech: ["WordPress", "Corporate Website", "Lead Generation", "Responsive UI"],
+      "Corporate engagement website presenting consulting, reward and recognition, event production, webinars and other services with clear lead-generation and contact flows. Integrated third-party APIs (Payment Gateways like Xendit, Social Media) and managed server security for live production environments.",
+    tech: ["WordPress", "Corporate Website", "Lead Generation", "Rank Math Local SEO", "GA4 Event Tracking", "Lead Forms", "Elementor"],
     href: "https://gwpengage.com/",
   },
   {
@@ -104,12 +148,15 @@ const wordpressProjects = [
     title: "Captain Ron's Window Cleaning",
     domain: "captainronsaz.com",
     description:
-      "Service-business website for window cleaning, sunscreens, outdoor shades and screen-door services, structured around service pages, quote calls-to-action, blog content and FAQs.",
-    tech: ["WordPress", "Service Pages", "Local SEO", "Lead Generation"],
+      "Service-business website for window cleaning, sunscreens, outdoor shades and screen-door services, structured around service pages, quote calls-to-action, blog content and FAQs. Local SEO Optimization (Google Business Profile Integration) and GA4 Conversion Tracking.",
+    tech: ["WordPress", "Local SEO", "Google Business Profile", "GA4 Conversion Tracking", "Schema Markup", "Elementor"],
     href: "https://captainronsaz.com/",
   },
 ];
 
+// ============================================================================
+// 3D WORKS
+// ============================================================================
 const threeDWorks = [
   {
     kind: "video",
@@ -198,24 +245,41 @@ const threeDWorks = [
   },
 ];
 
+// ============================================================================
+// PROFESSIONAL EXPERIENCE (from resume.md - ENHANCED)
+// ============================================================================
 const experience = [
   {
     period: "2024 — 2026",
     company: "FindXnY Solutions Inc.",
-    role: "Chief Technology Officer | Full-Stack & DevOps",
+    role: "Senior Technical Lead & Project Manager",
     details: [
-      "Built and shipped production-ready web and mobile applications using React Native (Expo), Next.js, TypeScript, Electron, FastAPI, Vite and GCP.",
-      "Integrated REST/GraphQL APIs and databases for reliable, scalable application and data workflows.",
-      "Managed server infrastructure, application deployment and cloud environments on Google Cloud Platform.",
-      "Designed a Next.js/TypeScript knowledge-management platform and cross-platform Electron tooling with an emphasis on performance and maintainability.",
+      "Technical Leadership: Led architectural transition from local deployment to scalable cloud infrastructure (AWS/GCP) for projects like Puppeteer.cloud and Scholarly.",
+      "Hands-on Development: Actively coded, tested, and deployed production-ready applications using React/Next.js, Expo, Node.js, and FastAPI.",
+      "Payment Integration Expertise: Integrated Xendit API for secure payment processing on FindXnY Payment Gateway, handling webhook notifications, order synchronization, and settlement reporting.",
+      "Mobile Engineering: Built mobile-first experiences (Lalaba) using React Native and Expo, ensuring consistent UI/UX across iOS and Android.",
+      "AI & Automation: Architected AI agent workflows (Puppeteer.cloud) to automate business processes and reduce manual data entry tasks by 80%.",
+      "Code Quality & Security: Implemented SonarQube integration in CI/CD pipelines for static code analysis, bug detection, and security vulnerability scanning.",
+      "Project Management: Managed full lifecycle delivery using Agile/Scrum methodologies, including sprint planning, backlog grooming, risk mitigation, stakeholder communication, and milestone tracking.",
     ],
   },
   {
     period: "2018 — 2023",
     company: "Freelance",
-    role: "WordPress Developer | Full-Stack Developer | 3D Artist",
+    role: "Project Manager | WordPress Developer | Full-Stack Developer",
     details: [
-      "Delivered client projects across WordPress, full-stack web development and 3D visualization, balancing technical implementation with visual requirements.",
+      "WordPress Optimization: Built custom WordPress themes and plugins for local businesses, optimizing Core Web Vitals scores using Rank Math and GA4.",
+      "Integration & Security: Integrated third-party APIs (Payment Gateways like Xendit, Social Media) and managed server security for live production environments.",
+    ],
+  },
+  {
+    period: "Oct 2022 — Dec 2023",
+    company: "Chess Learning Academy",
+    role: "Lead WordPress Developer",
+    details: [
+      "Managed technical delivery of local/national web presence (Chess Learning Academy), implementing strategies for search visibility and user experience optimization.",
+      "Developed custom WordPress child themes and optimized database queries, increasing organic traffic by 30%+ within 6 months.",
+      "Integrated third-party CRM tools for automated lead management and student tracking.",
     ],
   },
   {
@@ -236,17 +300,54 @@ const experience = [
   },
 ];
 
+// ============================================================================
+// CERTIFICATIONS (from resume.md - ENHANCED)
+// ============================================================================
 const certifications = [
   {
-    title: "Microsoft Artificial Intelligence Course: Azure AI Fundamentals",
-    issuer: "TESDA Online Program",
-    date: "",
+    title: "AWS Certified AI Practitioner (AIF-C01)",
+    issuer: "Amazon Web Services",
+    date: "October 14, 2026",
+  },
+  {
+    title: "Advanced Level of Software Engineering",
+    issuer: "DICT Digital Workforce Hub",
+    date: "October 2026",
+  },
+  {
+    title: "Intermediate Level of Software Engineering",
+    issuer: "DICT Digital Workforce Hub",
+    date: "October 2026",
+  },
+  {
+    title: "Basic Level of Software Engineering",
+    issuer: "DICT Digital Workforce Hub",
+    date: "October 2026",
+  },
+  {
+    title: "Microsoft Artificial Intelligence Fundamentals (Azure AI)",
+    issuer: "Microsoft",
+    date: "August 26, 2026",
   },
   {
     title: "Developing Designs for User Interface",
     issuer: "TESDA Online Program",
-    date: "",
+    date: "August 26, 2026",
   },
+];
+
+// ============================================================================
+// SKILLS (from resume.md)
+// ============================================================================
+const skills = [
+  { title: "Frontend", items: ["JavaScript", "TypeScript", "React", "Next.js", "HTML5 / CSS3", "Tailwind", "Vite"] },
+  { title: "Mobile", items: ["React Native", "Expo", "NativeWind"] },
+  { title: "Backend", items: ["Node.js", "Express", "FastAPI", "PHP", "Laravel"] },
+  { title: "APIs & Data", items: ["REST", "GraphQL", "Webhooks", "SQL", "PostgreSQL", "MongoDB", "Firebase", "Supabase"] },
+  { title: "Cloud & DevOps", items: ["Google Cloud Platform", "AWS", "Terraform", "Server Infrastructure", "Deployment", "CI/CD", "Docker | Podman"] },
+  { title: "AI & Automation", items: ["Azure AI", "LLM", "RAG", "n8n", "Workflow Automation", "API Integration"] },
+  { title: "CMS & Commerce", items: ["WordPress", "WooCommerce", "Shopify", "SEO"] },
+  { title: "3D & Creative", items: ["Blender", "3D Modeling", "3D Visualization", "Product Rendering", "Photoshop"] },
 ];
 
 function ArrowIcon() {
@@ -270,8 +371,8 @@ function GitHubIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
         fill="currentColor"
-        d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.64-1.37-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.08c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.35 4.81-4.58 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
-      />
+        d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.64-1.37-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.08c.85 0 1.7.12 2.5.35"
+        />
     </svg>
   );
 }
@@ -368,6 +469,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ======================================================================== */}
+      {/* PROFESSIONAL SUMMARY SECTION (NEW) */}
+      {/* ======================================================================== */}
+      <section className="section container summary-section" id="summary">
+        <div className="section-label"><span>01.5</span> Professional Summary</div>
+        <div className="summary-content">
+          <div className="summary-text">
+            {professionalSummary.split('\n').map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======================================================================== */}
+      {/* CORE COMPETENCIES SECTION (NEW) */}
+      {/* ======================================================================== */}
+      <section className="section container competencies-section" id="competencies">
+        <div className="section-label"><span>01.75</span> Core Competencies</div>
+        <div className="competencies-grid">
+          {coreCompetencies.map((competency, index) => (
+            <div key={index} className="competency-card">
+              <h3>{competency.category}</h3>
+              <div className="competency-skills">
+                {competency.skills.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="section work-section" id="work">
         <div className="container">
           <div className="section-heading project-heading">
@@ -380,7 +514,7 @@ export default function Home() {
             </p>
           </div>
           <div className="project-grid">
-            {projects.map((project) => (
+            {keyProjects.map((project) => (
               <article className="project-card" key={project.index}>
                 <div className="project-top">
                   <span className="project-index">{project.index}</span>
